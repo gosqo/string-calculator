@@ -26,7 +26,7 @@ public class PatternChecker {
         for (String pattern : PATTERNS) {
             if (patternMatches(pattern, input)) return pattern;
         }
-        throw new RuntimeException("형식에 맞지 않는 입력입니다.\n0 혹은 양의 정수만 입력 가능하며, 구분자는 통일되어야 합니다.");
+        throw new StringCalculatorFormatException();
     }
 
     private boolean patternMatches(String regex, String input) {
