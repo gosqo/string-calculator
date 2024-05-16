@@ -18,22 +18,26 @@ public class Extractor {
         return input.substring(getCustomClauseEndIndex() + 1);
     }
 
+    private String extractCustomDelimiter(String input) {
+        return input.substring(getCustomClauseBeginIndex(),getCustomClauseEndIndex());
+    }
+
     public String extractDelimiter(String input) {
-        String delimiter = "";
+        String delimiter ="";
 
         if (checker.hasCustomDelimiter(input)) {
-            delimiter = input.substring(getCustomClauseBeginIndex(),getCustomClauseEndIndex());
+            delimiter = extractCustomDelimiter(input);
+            return delimiter;
         }
         if (checker.delimitWithComma(input)) {
             delimiter = ",";
+            return delimiter;
         }
         if (checker.delimitWithColon(input)) {
             delimiter = ":";
-        }
-        if (delimiter.isEmpty()) {
-            throw new StringCalculatorFormatException();
+            return delimiter;
         }
 
-        return delimiter;
+        throw new StringCalculatorFormatException();
     }
 }
