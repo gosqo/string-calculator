@@ -26,7 +26,7 @@ public class Reader {
 
             if (Character.isDigit(line.charAt(line.length() - 1))) break;
 
-            input.append("\n");
+            input.append(Extractor.CUSTOM_CLAUSE_END_CHARACTER);
         }
 
         return input.toString();

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) throws IOException {
         PatternChecker checker = new PatternChecker();
         Extractor extractor = new Extractor();
@@ -28,7 +27,7 @@ public class Main {
             try {
                 delimiter = extractor.extractDelimiter(input);
                 if (checker.caseOf(input).equals(PatternChecker.CUSTOM_DELIMITER_REGEX)) {
-                    input = input.substring(4);
+                    input = extractor.removeCustomClause(input);
                 }
                 arr = tokenizer.splitWithDelimiter(delimiter, input);
                 numbers = mapper.mapStringToLong(arr);
