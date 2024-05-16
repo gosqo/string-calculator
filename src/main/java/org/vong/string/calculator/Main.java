@@ -2,7 +2,6 @@ package org.vong.string.calculator;
 
 import java.io.IOException;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class Main {
 
@@ -12,6 +11,7 @@ public class Main {
         Operator operator = new Operator();
         Tokenizer tokenizer = new Tokenizer();
         Mapper mapper = new Mapper();
+        Reader reader = new Reader();
 
         Scanner sc = new Scanner(System.in);
 
@@ -23,28 +23,14 @@ public class Main {
         while (true) {
 
             System.out.println("""
-                    ===
-                    계산할 값을 구분자와 함께 입력해주세요.
-                    ; 과 같은 구분자를 지정하고 싶다면 //; 을 입력 후 엔터를 누르고 계산할 값 지정 구분자와 함꼐 입력해주세요.
-                    ===
+                    =============================
+                    계산할 값을 구분자와 함께 입력해주세요. ex. 1,2,3 혹은 1:2:3
+                    ; 과 같은 구분자를 지정하고 싶다면
+                    //; 을 입력 후 엔터를 누르고 계산할 값 지정 구분자와 함꼐 입력해주세요.
+                    =======================================================
                     """);
 
-            StringBuilder inputBuilder = new StringBuilder();
-
-            while (sc.hasNextLine()) {
-                String line = sc.nextLine();
-
-                if (!line.isEmpty()) {
-                    inputBuilder.append(line).append("\n");
-                }
-
-                String lineEnd = line.substring(line.length() - 1);
-
-                if (Pattern.matches("\\d$", lineEnd)) break;
-            }
-            String input = inputBuilder.toString().trim(); // 마지막 "\n" 제거
-
-            System.out.println(input);
+            String input = reader.getInputTilEndsWithDigit();
 
             try {
                 delimiter = extractor.extractDelimiter(input);
@@ -56,6 +42,7 @@ public class Main {
 
                 break;
             } catch (RuntimeException e) {
+                System.out.println(e.getClass().getName());
                 System.out.println(e.getMessage());
             }
         }
