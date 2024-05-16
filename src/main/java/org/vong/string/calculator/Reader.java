@@ -20,6 +20,7 @@ public class Reader {
 
         while(true) {
             line = br.readLine();
+
             if (line.isEmpty()) break;
 
             input.append(line);
