@@ -7,11 +7,11 @@ public class Extractor {
     private final PatternChecker checker = new PatternChecker();
 
     private int getCustomClauseBeginIndex() {
-        return CUSTOM_CLAUSE_START_STRING.length() - 1;
+        return CUSTOM_CLAUSE_START_STRING.length();
     }
 
     private int getCustomClauseEndIndex() {
-        return getCustomClauseBeginIndex() + 2;
+        return getCustomClauseBeginIndex() + 1;
     }
 
     public String removeCustomClause(String input) {
