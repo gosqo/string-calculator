@@ -21,14 +21,7 @@ public class Main {
         long sum;
 
         while (true) {
-
-            System.out.println("""
-                    =============================
-                    계산할 값을 구분자와 함께 입력해주세요. ex. 1,2,3 혹은 1:2:3
-                    ; 과 같은 구분자를 지정하고 싶다면
-                    //; 을 입력 후 엔터를 누르고 계산할 값 지정 구분자와 함꼐 입력해주세요.
-                    =======================================================
-                    """);
+            System.out.println(Reader.MESSAGE_FOR_READ);
 
             String input = reader.getInputTilEndsWithDigit();
 
