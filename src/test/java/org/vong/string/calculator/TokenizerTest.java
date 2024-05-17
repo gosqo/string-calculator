@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.vong.string.calculator.Fixture.CUSTOM_DELIMITER_INPUT;
+import static org.vong.string.calculator.Fixture.COLON_DELIMITER;
 
 class TokenizerTest {
     private Tokenizer tokenizer;
@@ -16,6 +16,6 @@ class TokenizerTest {
 
     @Test
     void splitWithDelimiter() {
-        assertThat(tokenizer.splitWithDelimiter(";", CUSTOM_DELIMITER_INPUT)).isEqualTo(new String[]{"1", "2", "3"});
+        assertThat(tokenizer.splitWithDelimiter(":", COLON_DELIMITER)).isEqualTo(new String[]{"1", "2", "3"});
     }
 }
