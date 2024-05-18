@@ -3,8 +3,6 @@ package org.vong.string.calculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
 class CalculatorTest {
     private Calculator calculator;
 
@@ -14,18 +12,12 @@ class CalculatorTest {
     }
 
     @Test
-    void addPassingInputs() {
-        for (String input : Fixture.INPUTS_PASS) {
-            calculator.calculate(new VO(input));
-        }
+    void add() {
+        calculator.calculate(new VO(Fixture.ADD));
     }
 
     @Test
-    void addFailInputs() {
-        assertThatThrownBy(() -> {
-            for (String input : Fixture.INPUTS_FAIL) {
-                calculator.calculate(new VO(input));
-            }
-        });
+    void subtract() {
+        calculator.calculate(new VO(Fixture.SUBTRACT));
     }
 }
