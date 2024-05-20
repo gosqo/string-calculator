@@ -46,10 +46,13 @@ class TokenizerTest {
             );
 
             assertThat(filterEvenIndex(list)).matches(item ->
-                    item.stream().allMatch(e -> Pattern.matches(DIGIT, e)
-                    ), "digits expected.");
+                    item.stream().allMatch(
+                            e -> Pattern.matches(DIGIT, e)
+                    ), "digits expected."
+            );
             assertThat(filterOddIndex(list)).matches(item ->
-                    item.stream().allMatch(e -> Pattern.matches(OPERATOR, e)
+                    item.stream().allMatch(
+                            e -> Pattern.matches(OPERATOR, e)
                     ), "operator expected.");
         }
     }
