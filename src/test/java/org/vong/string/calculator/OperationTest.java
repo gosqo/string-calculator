@@ -24,6 +24,6 @@ public class OperationTest {
 
     @Test
     void operateWithInputs() {
-        long result = operation.operate(Fixture.ADD);
+        long result = operation.operate(Fixture.ADDITION);
     }
 }

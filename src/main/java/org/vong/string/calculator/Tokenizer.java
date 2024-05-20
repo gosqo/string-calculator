@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Tokenizer {
-    private static final String TOKEN_REGEX = "\\d+|[+\\-]";
+    private static final String TOKEN_REGEX = "\\d+|[+\\-*/]";
 
     private final Pattern pattern = Pattern.compile(TOKEN_REGEX);
 
