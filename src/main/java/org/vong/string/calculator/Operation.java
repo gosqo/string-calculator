@@ -12,9 +12,7 @@ public class Operation {
     }
 
     public long operate(String input) {
-        List<String> list = tokenizer.tokenize(input);
-
-        return operate(list);
+        return operate(tokenizer.tokenize(input));
     }
 
     public long operate(List<String> list) {
