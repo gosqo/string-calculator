@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.vong.string.calculator.Fixture.*;
 
 class PatternCheckerTest {
@@ -25,10 +26,26 @@ class PatternCheckerTest {
     }
 
     @Test
-    void patternCheck() {
+    void passInputs() {
         for (String input : PASS_INPUTS) {
             System.out.println(input);
             assertThat(checker.isComputable((input))).isTrue();
+        }
+    }
+
+    @Test
+    void throwInputs() {
+        for (String input : THROW_INPUTS) {
+            System.out.println(input);
+            assertThatThrownBy(() -> checker.isComputable(input));
+        }
+    }
+
+    @Test
+    void failInputs() {
+        for (String input : FAIL_INPUTS) {
+            System.out.println(input);
+            assertThat(checker.isComputable(input)).isFalse();
         }
     }
 }

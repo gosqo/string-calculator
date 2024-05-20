@@ -3,7 +3,7 @@ package org.vong.string.calculator;
 import java.util.List;
 
 public class Operation {
-    static final String OPERATOR_TOKEN_REGEX = "[+\\-]";
+    static final String OPERATOR_TOKEN_REGEX = "[+\\-*/]";
 
     private final Tokenizer tokenizer;
 
@@ -37,6 +37,8 @@ public class Operation {
         return switch (operator) {
             case "+" -> result += operand;
             case "-" -> result -= operand;
+            case "*" -> result *= operand;
+            case "/" -> result /= operand;
             default -> throw new IllegalArgumentException("Invalid operator.");
         };
     }

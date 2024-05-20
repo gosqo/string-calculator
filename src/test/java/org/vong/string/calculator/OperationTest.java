@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.vong.string.calculator.Fixture.PASS_INPUTS;
 
 public class OperationTest {
     private Operation operation;
@@ -24,6 +25,9 @@ public class OperationTest {
 
     @Test
     void operateWithInputs() {
-        long result = operation.operate(Fixture.ADDITION);
+        for (String input : PASS_INPUTS) {
+            long result = operation.operate(input);
+            System.out.println(result);
+        }
     }
 }
