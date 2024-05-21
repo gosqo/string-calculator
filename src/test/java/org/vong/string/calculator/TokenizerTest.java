@@ -8,10 +8,11 @@ import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.vong.string.calculator.Fixture.PASS_FLOATING_INPUTS;
 import static org.vong.string.calculator.Fixture.PASS_INPUTS;
 
 class TokenizerTest {
-    private static final String DIGIT = "^\\d+$";
+    private static final String DIGIT = "^[\\d+]?[.]?\\d+$";
     private static final String OPERATOR = "^[+\\-*/]$";
 
     private Tokenizer tokenizer;
@@ -33,6 +34,28 @@ class TokenizerTest {
                 .filter(i -> i % 2 == 1)
                 .mapToObj(inputList::get)
                 .toList();
+    }
+
+    @Test
+    void tokenizeFloatingInputs() {
+        for (String input : PASS_FLOATING_INPUTS) {
+            List<String> list = tokenizer.tokenize(input);
+            System.out.printf("""
+                    %s
+                    tokenized: %s%n
+                    """, input, list
+            );
+
+            assertThat(filterEvenIndex(list)).matches(item ->
+                    item.stream().allMatch(
+                            e -> Pattern.matches(DIGIT, e)
+                    ), "digits expected."
+            );
+            assertThat(filterOddIndex(list)).matches(item ->
+                    item.stream().allMatch(
+                            e -> Pattern.matches(OPERATOR, e)
+                    ), "operator expected.");
+        }
     }
 
     @Test

@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
+import static org.vong.string.calculator.Fixture.PASS_FLOATING_INPUTS;
+
 class CalculatorTest {
     private Calculator calculator;
     private final PatternChecker checker = new PatternChecker();
@@ -15,6 +17,12 @@ class CalculatorTest {
     @BeforeEach
     void setUp() {
         calculator = new Calculator(checker, operation);
+    }
+
+    @Test
+    void calculateFloatingInputs() {
+        Arrays.stream(PASS_FLOATING_INPUTS)
+                .forEach(input -> calculator.calculate(input));
     }
 
     @Test

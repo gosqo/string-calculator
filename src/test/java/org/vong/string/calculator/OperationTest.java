@@ -3,9 +3,11 @@ package org.vong.string.calculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.vong.string.calculator.Fixture.PASS_FLOATING_INPUTS;
 import static org.vong.string.calculator.Fixture.PASS_INPUTS;
 
 public class OperationTest {
@@ -18,15 +20,23 @@ public class OperationTest {
     }
 
     @Test
-    void operate() {
-        long result = operation.operate(Arrays.asList("11", "+", "22", "+", "33", "-", "33"));
-        assertThat(result).isEqualTo(33L);
+    void operateFloatingInputs() {
+        for (String input : PASS_FLOATING_INPUTS) {
+            BigDecimal result = operation.operateBigDecimal(input);
+            System.out.println(result);
+        }
     }
 
     @Test
-    void operateWithInputs() {
+    void operate() {
+        BigDecimal result = operation.operateBigDecimal(Arrays.asList("11", "+", "22", "+", "33", "-", "33"));
+        assertThat(result).isEqualTo(BigDecimal.valueOf(33));
+    }
+
+    @Test
+    void operateInputs() {
         for (String input : PASS_INPUTS) {
-            long result = operation.operate(input);
+            BigDecimal result = operation.operateBigDecimal(input);
             System.out.println(result);
         }
     }

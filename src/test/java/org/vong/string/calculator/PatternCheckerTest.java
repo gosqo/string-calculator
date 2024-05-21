@@ -26,6 +26,14 @@ class PatternCheckerTest {
     }
 
     @Test
+    void checkPassFloatingInputs() {
+        for (String input : PASS_FLOATING_INPUTS) {
+            System.out.println(input);
+            assertThat(checker.isComputable(input)).isTrue();
+        }
+    }
+    
+    @Test
     void passInputs() {
         for (String input : PASS_INPUTS) {
             System.out.println(input);

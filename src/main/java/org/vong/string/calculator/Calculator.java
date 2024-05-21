@@ -14,6 +14,6 @@ public class Calculator {
             throw new InputFormatException(input);
         }
 
-        System.out.println(operation.operate(input));
+        System.out.println(operation.operateBigDecimal(input));
     }
 }
